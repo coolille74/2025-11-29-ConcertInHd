@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soundboard</title>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-om3LZK8KX3+gJv+5eW3ThgKrRDPv7L8xH87dZ7DkzM+G8ADzH+Uo4E5BtUZCjAb9JwqIlfYtA5j1kN+4Ff3K7Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    body {
+      background: #111;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      color: #eee;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .tile {
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 110px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s;
+    }
+
+    .tile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+      opacity: 0.9;
+    }
+
+    .tile i {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* Farbvarianten */
+    .c1 { background: #e74c3c; }   /* rot */
+    .c2 { background: #f39c12; }   /* orange */
+    .c3 { background: #f1c40f; }   /* gelb */
+    .c4 { background: #2ecc71; }   /* grün */
+    .c5 { background: #1abc9c; }   /* türkis */
+    .c6 { background: #3498db; }   /* blau */
+    .c7 { background: #9b59b6; }   /* lila */
+    .c8 { background: #34495e; }   /* dunkelblau */
+    .c9 { background: #16a085; }   /* jade */
+    .c10 { background: #e67e22; }  /* orangebraun */
+    .c11 { background: #c0392b; }  /* dunkelrot */
+    .c12 { background: #7f8c8d; }  /* grau */
+  </style>
+</head>
+<body>
+
+  <h1>🎧 Mein Soundboard</h1>
+
+  <div class="board">
+    <div class="tile c1" data-sound="sounds/1.mp3"><i class="fa-solid fa-drum"></i>Beat 1</div>
+    <div class="tile c2" data-sound="sounds/2.mp3"><i class="fa-solid fa-guitar"></i>Gitarre</div>
+    <div class="tile c3" data-sound="sounds/3.mp3"><i class="fa-solid fa-bell"></i>Klingel</div>
+    <div class="tile c4" data-sound="sounds/4.mp3"><i class="fa-solid fa-dog"></i>Bellen</div>
+    <div class="tile c5" data-sound="sounds/5.mp3"><i class="fa-solid fa-music"></i>Melodie</div>
+    <div class="tile c6" data-sound="sounds/6.mp3"><i class="fa-solid fa-volume-high"></i>Sound 6</div>
+    <div class="tile c7" data-sound="sounds/7.mp3"><i class="fa-solid fa-car"></i>Auto</div>
+    <div class="tile c8" data-sound="sounds/8.mp3"><i class="fa-solid fa-cloud"></i>Regen</div>
+    <div class="tile c9" data-sound="sounds/9.mp3"><i class="fa-solid fa-cat"></i>Miau</div>
+    <div class="tile c10" data-sound="sounds/10.mp3"><i class="fa-solid fa-bolt"></i>Blitz</div>
+    <div class="tile c11" data-sound="sounds/11.mp3"><i class="fa-solid fa-triangle-exclamation"></i>Alarm</div>
+    <div class="tile c12" data-sound="sounds/12.mp3"><i class="fa-solid fa-heart"></i>Love</div>
+  </div>
+
+  <footer>© 2025 Dein Soundboard</footer>
+
+  <script>
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const sound = tile.dataset.sound;
+        const audio = new Audio(sound);
+        audio.play().catch(err => console.error("Fehler beim Abspielen:", err));
+      });
+    });
+  </script>
+
+</body>
+</html>
+	
