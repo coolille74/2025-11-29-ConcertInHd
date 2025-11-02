@@ -1,10 +1,19 @@
-<html>
-
+Ôªø<!DOCTYPE html>
+<html lang="de">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alle Jahre wieder</title>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
 <meta name=Generator content="Microsoft Word 14 (filtered)">
 <style>
 <!--
+  #top-audio button {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-size: 14px;
+    text-align:right; 
+  }
  /* Font Definitions */
  @font-face
 	{font-family:Cambria;
@@ -22,7 +31,7 @@
 	font-size:11.0pt;
 	font-family:"Calibri","sans-serif";}
 h1
-	{mso-style-link:"‹berschrift 1 Zchn";
+	{mso-style-link:"√úberschrift 1 Zchn";
 	margin-top:24.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -34,7 +43,7 @@ h1
 	font-family:"Cambria","serif";
 	color:#365F91;}
 h2
-	{mso-style-link:"‹berschrift 2 Zchn";
+	{mso-style-link:"√úberschrift 2 Zchn";
 	margin-top:10.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -46,7 +55,7 @@ h2
 	font-family:"Cambria","serif";
 	color:#4F81BD;}
 h3
-	{mso-style-link:"‹berschrift 3 Zchn";
+	{mso-style-link:"√úberschrift 3 Zchn";
 	margin-top:10.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -58,7 +67,7 @@ h3
 	font-family:"Cambria","serif";
 	color:#4F81BD;}
 h4
-	{mso-style-link:"‹berschrift 4 Zchn";
+	{mso-style-link:"√úberschrift 4 Zchn";
 	margin-top:10.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -80,26 +89,26 @@ span.MsoIntenseEmphasis
 	font-weight:bold;
 	font-style:italic;}
 span.berschrift2Zchn
-	{mso-style-name:"‹berschrift 2 Zchn";
-	mso-style-link:"‹berschrift 2";
+	{mso-style-name:"√úberschrift 2 Zchn";
+	mso-style-link:"√úberschrift 2";
 	font-family:"Cambria","serif";
 	color:#4F81BD;
 	font-weight:bold;}
 span.berschrift1Zchn
-	{mso-style-name:"‹berschrift 1 Zchn";
-	mso-style-link:"‹berschrift 1";
+	{mso-style-name:"√úberschrift 1 Zchn";
+	mso-style-link:"√úberschrift 1";
 	font-family:"Cambria","serif";
 	color:#365F91;
 	font-weight:bold;}
 span.berschrift3Zchn
-	{mso-style-name:"‹berschrift 3 Zchn";
-	mso-style-link:"‹berschrift 3";
+	{mso-style-name:"√úberschrift 3 Zchn";
+	mso-style-link:"√úberschrift 3";
 	font-family:"Cambria","serif";
 	color:#4F81BD;
 	font-weight:bold;}
 span.berschrift4Zchn
-	{mso-style-name:"‹berschrift 4 Zchn";
-	mso-style-link:"‹berschrift 4";
+	{mso-style-name:"√úberschrift 4 Zchn";
+	mso-style-link:"√úberschrift 4";
 	font-family:"Cambria","serif";
 	color:#4F81BD;
 	font-weight:bold;
@@ -123,8 +132,24 @@ div.WordSection1
 
 <div class=WordSection1>
 
-<h2><span class=MsoIntenseEmphasis><span style='font-size:18.0pt;line-height:
-115%;font-weight:normal'>Alle Jahre wieder</span></span></h2>
+<!-- Player rechts oben -->
+<audio id="player">
+  <source src="Alle Jahre wieder (Karaoke).mp3" type="audio/mpeg">
+  Dein Browser unterst√É¬ºtzt das Audio-Element nicht.
+</audio>
+<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Alle Jahre wieder</span></h1>
+<button onclick="document.getElementById('player').play()">Play</button>
+<button onclick="document.getElementById('player').pause()">Pause</button>
+<button onclick="stopAudio()">Stop</button>
+<script>
+  function stopAudio() {
+    const audio = document.getElementById('player');
+    audio.pause();
+    audio.currentTime = 0; // zur√É¬ºck zum Anfang
+  }
+</script>
+
+
 
 <p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
 
@@ -152,7 +177,7 @@ div.WordSection1
 
 <p class=MsoNoSpacing><span style='font-size:16.0pt'>Still und unerkannt,</span></p>
 
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Daﬂ es treu mich leite</span></p>
+<p class=MsoNoSpacing><span style='font-size:16.0pt'>Da√ü es treu mich leite</span></p>
 
 <p class=MsoNoSpacing><span style='font-size:16.0pt'>An der lieben Hand.</span></p>
 

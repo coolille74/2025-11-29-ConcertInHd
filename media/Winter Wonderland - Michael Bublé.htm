@@ -1,10 +1,19 @@
-<html>
-
+﻿<!DOCTYPE html>
+<html lang="de">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winter Wonderland</title>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
 <meta name=Generator content="Microsoft Word 14 (filtered)">
 <style>
 <!--
+  #top-audio button {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-size: 14px;
+    text-align:right; 
+  }
  /* Font Definitions */
  @font-face
 	{font-family:Cambria;
@@ -22,7 +31,7 @@
 	font-size:11.0pt;
 	font-family:"Calibri","sans-serif";}
 h2
-	{mso-style-link:"�berschrift 2 Zchn";
+	{mso-style-link:"Überschrift 2 Zchn";
 	margin-top:10.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -55,8 +64,8 @@ span.MsoIntenseEmphasis
 	font-weight:bold;
 	font-style:italic;}
 span.berschrift2Zchn
-	{mso-style-name:"�berschrift 2 Zchn";
-	mso-style-link:"�berschrift 2";
+	{mso-style-name:"Überschrift 2 Zchn";
+	mso-style-link:"Überschrift 2";
 	font-family:"Cambria","serif";
 	color:#4F81BD;
 	font-weight:bold;}
@@ -86,8 +95,23 @@ div.WordSection1
 
 <div class=WordSection1>
 
-<p class=MsoSubtitle><span class=MsoIntenseEmphasis><span style='font-style:
-normal'>Winter Wonderland</span></span></p>
+<!-- Player rechts oben -->
+<audio id="player">
+  <source src="Winter Wonderland - Michael Bublé - HP.mp3" type="audio/mpeg">
+  Dein Browser unterstÃ¼tzt das Audio-Element nicht.
+</audio>
+<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Winter Wonderland</span></h1>
+<button onclick="document.getElementById('player').play()">Play</button>
+<button onclick="document.getElementById('player').pause()">Pause</button>
+<button onclick="stopAudio()">Stop</button>
+<script>
+  function stopAudio() {
+    const audio = document.getElementById('player');
+    audio.pause();
+    audio.currentTime = 0; // zurÃ¼ck zum Anfang
+  }
+</script>
+
 
 <p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
 
