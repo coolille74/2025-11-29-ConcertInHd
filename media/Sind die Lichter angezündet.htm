@@ -1,176 +1,157 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sind die Lichter angezündet</title>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 14 (filtered)">
-<style>
-<!--
-  #top-audio button {
-    background-color: #f2f2f2;
-    cursor: pointer;
-    font-size: 14px;
-    text-align:right; 
-  }
- /* Font Definitions */
- @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:10.0pt;
-	margin-left:0cm;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-h2
-	{mso-style-link:"Überschrift 2 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:13.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-span.berschrift2Zchn
-	{mso-style-name:"Überschrift 2 Zchn";
-	mso-style-link:"Überschrift 2";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:42.55pt 72.0pt 35.45pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
 
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 600px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
 </head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+<span style="color: gray;">| VP:</span>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="Sind die Lichter angezündet.mp3"></audio>
 
-<body lang=DE>
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
+  </div>
 
-<div class=WordSection1>
+  <h1>Sind die Lichter angezündet</h1>
 
-<!-- Player rechts oben -->
-<audio id="player">
-  <source src="Sind die Lichter angezündet.mp3" type="audio/mpeg">
-  Dein Browser unterstÃ¼tzt das Audio-Element nicht.
-</audio>
-<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Sind
-die Lichter angezündet</span></h1>
-<button onclick="document.getElementById('player').play()">Play</button>
-<button onclick="document.getElementById('player').pause()">Pause</button>
-<button onclick="stopAudio()">Stop</button>
-<script>
-  function stopAudio() {
-    const audio = document.getElementById('player');
-    audio.pause();
-    audio.currentTime = 0; // zurÃ¼ck zum Anfang
-  }
+  <div class="lyrics">
+Sind die Lichter angezündet,
+Freude zieht in jeden Raum;
+Weihnachtsfreude wird verkündet
+unter jedem Lichterbaum.
+<strong>
+Leuchte, Licht, mit hellem Schein,
+überall, überall soll Freude sein.
+</strong>
+Süsse Dinge, schöne Gaben
+gehen nun von Hand zu Hand.
+Jedes Kind soll Freude haben,
+jedes Kind in jedem Land.
+<strong>
+Leuchte, Licht, mit hellem Schein,
+überall, überall soll Freude sein.
+</strong>
+Sind die Lichter angezündet,
+rings ist jeder Raum erhellt;
+Weinachtsfriede wird verkündet,
+zieht hinaus in alle Welt.
+<strong>
+Leuchte, Licht, mit hellem Schein,
+überall, überall soll Friede sein.
+</strong>
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
 </script>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:16.0pt;
-line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Sind die Lichter angezündet,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Freude zieht in jeden Raum;</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Weihnachtsfreude wird verkündet</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>unter jedem Lichterbaum.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Leuchte, Licht, mit hellem Schein,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>überall, überall soll Freude sein.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Süsse Dinge, schöne Gaben</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>gehen nun von Hand zu Hand.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Jedes Kind soll Freude haben,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>jedes Kind in jedem Land.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Leuchte, Licht, mit hellem Schein,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>überall, überall soll Freude sein.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Sind die Lichter angezündet,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>rings ist jeder Raum erhellt;</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Weinachtsfriede wird verkündet,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>zieht hinaus in alle Welt.</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>Leuchte, Licht, mit hellem Schein,</span></p>
-
-<p class=MsoNoSpacing style='line-height:115%'><span style='font-size:14.0pt;
-line-height:115%'>überall, überall soll Friede sein.</span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;color:#A6A6A6'>Um
-1950 schrieb die Lyrikerin und Kinderbuchautorin Erika Engel das Gedicht
-Weihnachtsfreude. Dieses Gedicht wurde vom späteren Musikreferenten des
-Mitteldeutschen Rundfunks und Leiter des Rundfunk-Kinderchores in Leipzig, Hans
-Sandig, vertont. Das dreistrophige Lied entwickelte sich zu einem der
-bekanntesten Weihnachtslieder in der DDR.</span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;color:#A6A6A6'>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;color:#A6A6A6'>1957
-erschien das Lied erstmals auf einer Eterna-Schallplatte des VEB Deutsche
-Schallplatten.</span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%'>&nbsp;</span></p>
-
-</div>
-
 </body>
-
 </html>

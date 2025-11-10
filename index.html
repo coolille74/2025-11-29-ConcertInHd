@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soundboard</title>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-om3LZK8KX3+gJv+5eW3ThgKrRDPv7L8xH87dZ7DkzM+G8ADzH+Uo4E5BtUZCjAb9JwqIlfYtA5j1kN+4Ff3K7Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    body {
+      background: #111;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      color: #eee;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .tile {
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 110px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s;
+      text-decoration: none;
+	  text-align: center;
+    }
+
+    .tile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+      opacity: 0.9;
+    }
+
+    .tile i {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* Farbvarianten */
+    .c1 { background: #e74c3c; }   /* rot */
+    .c2 { background: #f39c12; }   /* orange */
+    .c3 { background: #f1c40f; }   /* gelb */
+    .c4 { background: #2ecc71; }   /* grün */
+    .c5 { background: #1abc9c; }   /* türkis */
+    .c6 { background: #3498db; }   /* blau */
+    .c7 { background: #9b59b6; }   /* lila */
+    .c8 { background: #34495e; }   /* dunkelblau */
+    .c9 { background: #e67e22; }  /* orangebraun */
+    .c10 { background: #c0392b; }  /* dunkelrot */
+  </style>
+</head>
+<body>
+
+  <h1>🎧 Weihnachtskonzert Hennickendorf 29.11.2025</h1>
+
+  <div class="board">
+    <a href="media/Alle Jahre wieder.htm" class="tile c1">Alle Jahre wieder</a>
+    <a href="media/Winter Wonderland - Michael Bublé.htm" class="tile c2">Winter Wonderland</a>
+    <a href="media/Wir haben einen Weihnachtsbaum.htm" class="tile c4">Wir haben einen Weihnachtsbaum</a>
+    <a href="media/Merry Christmas - Ed Sheeran + Elton John.htm" class="tile c3">Merry Christmas</a>
+    <a href="media/Can You Feel the Love Tonight.htm" class="tile c5">Can You Feel the Love Tonight</a>
+    <a href="media/Silent Night - Michael Bublé.htm" class="tile c6"></i>Silent Night</a>
+    <a href="media/Daß ich eine Schneeflocke wär.htm" class="tile c7">Daß ich eine Schneeflocke wär</a>
+    <a href="media/Christmas Lights.htm" class="tile c8">Christmas Lights</a>
+    <a href="media/Weihnachten in Familie.htm" class="tile c9">Weihnachten in Familie</a>
+    <a href="media/Sind die Lichter angezündet.htm" class="tile c10">Sind die Lichter angezündet</a>
+  </div>
+
+  <footer>© 2025 Soundboard</footer>
+
+</body>
+</html>

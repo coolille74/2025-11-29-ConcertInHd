@@ -1,214 +1,185 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christmas Lights</title>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 14 (filtered)">
-<style>
-<!--
-  #top-audio button {
-    background-color: #f2f2f2;
-    cursor: pointer;
-    font-size: 14px;
-    text-align:right; 
-  }
- /* Font Definitions */
- @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:10.0pt;
-	margin-left:0cm;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-h2
-	{mso-style-link:"�berschrift 2 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:13.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-span.berschrift2Zchn
-	{mso-style-name:"�berschrift 2 Zchn";
-	mso-style-link:"�berschrift 2";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:21.3pt 72.0pt 21.3pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
 
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 600px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
 </head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+<span style="color: gray;">| VP:</span>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="Christmas Lights - Coldplay.mp3"></audio>
+    <audio id="halfplayback" src="Christmas Lights - Coldplay (Karaoke).mp3"></audio>
 
-<body lang=DE>
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
+<span style="color: gray;">| HP:</span>
+    <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('halfplayback')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('halfplayback')">⏹️</button>
+  </div>
 
-<div class=WordSection1>
+  <h1>Christmas Lights</h1>
 
-<!-- Player rechts oben -->
-<audio id="player">
-  <source src="Christmas Lights - Coldplay.mp3" type="audio/mpeg">
-  Dein Browser unterstützt das Audio-Element nicht.
-</audio>
-<h1><span lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Christmas
-Lights (Coldplay)</span></h1>
-<button onclick="document.getElementById('player').play()">▶️</button>
-<button onclick="document.getElementById('player').pause()">⏸️</button>
-<button onclick="stopAudio()">⏹️</button>
-<script>
-  function stopAudio() {
-    const audio = document.getElementById('player');
-    audio.pause();
-    audio.currentTime = 0; // zurück zum Anfang
-  }
+  <div class="lyrics">
+Christmas night, another fight
+Tears, we cried a flood
+Got all kinds of poison in
+Of poison in my blood
+
+I took my feet to Oxford Street
+Trying to right a wrong
+Just walk away, those windows say
+But I can′t believe she's gone
+
+<strong>
+When you′re still waiting for the snow to fall
+Doesn't really feel like Christmas at all
+</strong>
+
+Up above, candles on air flicker
+Oh, they flicker and they float
+And I'm up here holdin′ on
+To all those chandeliers of hope
+
+
+Like some drunken Elvis singin′
+I go singin' out of tune
+Sayin′ how I always loved you, darlin'
+And I always will
+
+<strong>
+Oh, when you′re still waiting for the snow to fall
+It doesn't really feel like Christmas at all
+Still waiting for the snow to fall
+It doesn′t really feel like Christmas at all
+</strong>
+
+Those Christmas lights light up the street
+Down where the sea and city meet
+May all your troubles soon be gone
+Oh, Christmas lights, keep shinin' on
+
+Those Christmas lights light up the street
+Maybe they'll bring her back to me
+And then all my troubles will be gone
+Oh, Christmas lights, keep shinin′ on
+
+Oh, Christmas lights, light up the street
+Light up the fireworks in me
+May all your troubles soon be gone
+Those Christmas lights keep shinin′ on
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
 </script>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Christmas
-night, another fight</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Tears, we cried
-a flood</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Got all kinds
-of poison in</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Of poison in my
-blood</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>I took my feet
-to Oxford Street</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Trying to right
-a wrong</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Just walk away,
-those windows say</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>But I
-can&#8242;t believe she's gone</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>When
-you&#8242;re still waiting for the snow to fall</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Doesn't really
-feel like Christmas at all</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Up above,
-candles on air flicker</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Oh, they
-flicker and they float</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>And I'm up here
-holdin&#8242; on</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>To all those
-chandeliers of hope</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Like some
-drunken Elvis singin&#8242;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>I go singin'
-out of tune</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Sayin&#8242;
-how I always loved you, darlin'</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>And I always
-will</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Oh, when
-you&#8242;re still waiting for the snow to fall</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>It doesn't
-really feel like Christmas at all</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Still waiting
-for the snow to fall</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>It
-doesn&#8242;t really feel like Christmas at all</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Those Christmas
-lights light up the street</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Down where the
-sea and city meet</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>May all your
-troubles soon be gone</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Oh, Christmas
-lights, keep shinin' on</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Those Christmas
-lights light up the street</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Maybe they'll
-bring her back to me</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>And then all my
-troubles will be gone</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Oh, Christmas
-lights, keep shinin&#8242; on</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Oh, Christmas
-lights, light up the street</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Light up the
-fireworks in me</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>May all your
-troubles soon be gone</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-size:14.0pt'>Those Christmas
-lights keep shinin&#8242; on</span></p>
-
-</div>
-
 </body>
-
 </html>

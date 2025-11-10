@@ -1,196 +1,147 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alle Jahre wieder</title>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 14 (filtered)">
-<style>
-<!--
-  #top-audio button {
-    background-color: #f2f2f2;
-    cursor: pointer;
-    font-size: 14px;
-    text-align:right; 
-  }
- /* Font Definitions */
- @font-face
-	{font-family:Cambria;
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:10.0pt;
-	margin-left:0cm;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-h1
-	{mso-style-link:"Überschrift 1 Zchn";
-	margin-top:24.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:14.0pt;
-	font-family:"Cambria","serif";
-	color:#365F91;}
-h2
-	{mso-style-link:"Überschrift 2 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:13.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;}
-h3
-	{mso-style-link:"Überschrift 3 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:11.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;}
-h4
-	{mso-style-link:"Überschrift 4 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:11.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-style:italic;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-span.MsoIntenseEmphasis
-	{color:#4F81BD;
-	font-weight:bold;
-	font-style:italic;}
-span.berschrift2Zchn
-	{mso-style-name:"Überschrift 2 Zchn";
-	mso-style-link:"Überschrift 2";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;}
-span.berschrift1Zchn
-	{mso-style-name:"Überschrift 1 Zchn";
-	mso-style-link:"Überschrift 1";
-	font-family:"Cambria","serif";
-	color:#365F91;
-	font-weight:bold;}
-span.berschrift3Zchn
-	{mso-style-name:"Überschrift 3 Zchn";
-	mso-style-link:"Überschrift 3";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;}
-span.berschrift4Zchn
-	{mso-style-name:"Überschrift 4 Zchn";
-	mso-style-link:"Überschrift 4";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;
-	font-style:italic;}
-.MsoChpDefault
-	{font-family:"Calibri","sans-serif";}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
 
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 600px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
 </head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="halfplayback" src="Alle Jahre wieder - HP.mp3"></audio>
 
-<body lang=DE>
+<span style="color: gray;">| HP:</span>
+    <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('halfplayback')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('halfplayback')">⏹️</button>
+  </div>
 
-<div class=WordSection1>
+  <h1>Alle Jahre wieder</h1>
 
-<!-- Player rechts oben -->
-<audio id="player">
-  <source src="Alle Jahre wieder (Karaoke).mp3" type="audio/mpeg">
-  Dein Browser unterstÃ¼tzt das Audio-Element nicht.
-</audio>
-<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Alle Jahre wieder</span></h1>
-<button onclick="document.getElementById('player').play()">Play</button>
-<button onclick="document.getElementById('player').pause()">Pause</button>
-<button onclick="stopAudio()">Stop</button>
-<script>
-  function stopAudio() {
-    const audio = document.getElementById('player');
-    audio.pause();
-    audio.currentTime = 0; // zurÃ¼ck zum Anfang
-  }
+  <div class="lyrics">
+Alle Jahre wieder
+kommt das Christuskind
+auf die Erde nieder,
+wo wir Menschen sind.
+
+Kehrt mit seinem Segen
+ein in jedes Haus,
+geht auf allen Wegen
+mit uns ein und aus.
+
+Ist auch mir zur Seite
+still und unerkannt,
+daß es treu mich leite
+an der lieben Hand.
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
 </script>
-
-
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Alle Jahre wieder</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Kommt das Christuskind</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Auf die Erde nieder,</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Wo wir Menschen sind;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Kehrt mit seinem Segen</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Ein in jedes Haus,</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Geht auf allen Wegen</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Mit uns ein und aus;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Ist auch mir zur Seite</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Still und unerkannt,</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>Daß es treu mich leite</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>An der lieben Hand.</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:16.0pt'>&nbsp;</span></p>
-
-</div>
-
 </body>
-
 </html>

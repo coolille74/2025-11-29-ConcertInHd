@@ -1,188 +1,203 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merry Christmas</title>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 14 (filtered)">
-<style>
-<!--
-  #top-audio button {
-    background-color: #f2f2f2;
-    cursor: pointer;
-    font-size: 14px;
-    text-align:right; 
-  }
- /* Font Definitions */
- @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:10.0pt;
-	margin-left:0cm;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-h2
-	{mso-style-link:"Überschrift 2 Zchn";
-	margin-right:0cm;
-	margin-left:0cm;
-	font-size:18.0pt;
-	font-family:"Times New Roman","serif";}
-p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{mso-style-link:"Kopfzeile Zchn";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{mso-style-link:"Fußzeile Zchn";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-a:link, span.MsoHyperlink
-	{color:blue;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{color:purple;
-	text-decoration:underline;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-span.berschrift2Zchn
-	{mso-style-name:"Überschrift 2 Zchn";
-	mso-style-link:"Überschrift 2";
-	font-family:"Times New Roman","serif";
-	font-weight:bold;}
-span.KopfzeileZchn
-	{mso-style-name:"Kopfzeile Zchn";
-	mso-style-link:Kopfzeile;}
-span.FuzeileZchn
-	{mso-style-name:"Fußzeile Zchn";
-	mso-style-link:Fußzeile;}
-.MsoChpDefault
-	{font-family:"Calibri","sans-serif";}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
- /* Page Definitions */
- @page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:42.55pt 72.0pt 14.2pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
 
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 800px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    .lyrics-right {
+      max-width: 800px;
+      margin: 0 auto;
+      white-space: pre-line;
+      text-align: right;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
 </head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+<span style="color: gray;">| VP:</span>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="Merry Christmas - Ed Sheeran + Elton John - Original.mp3"></audio>
+    <audio id="halfplayback" src="Merry Christmas - Ed Sheeran + Elton John - HP.mp3"></audio>
 
-<body lang=DE link=blue vlink=purple>
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
+<span style="color: gray;">| HP:</span>
+    <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('halfplayback')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('halfplayback')">⏹️</button>
+  </div>
 
-<div class=WordSection1>
+  <h1>Merry Christmas</h1>
 
-<!-- Player rechts oben -->
-<audio id="player">
-  <source src="Merry Christmas - Ed Sheeran + Elton John - HP.mp3" type="audio/mpeg">
-  Dein Browser unterstÃ¼tzt das Audio-Element nicht.
-</audio>
-<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Merry
-Christmas</span></h1>
-<button onclick="document.getElementById('player').play()">Play</button>
-<button onclick="document.getElementById('player').pause()">Pause</button>
-<button onclick="stopAudio()">Stop</button>
-<script>
-  function stopAudio() {
-    const audio = document.getElementById('player');
-    audio.pause();
-    audio.currentTime = 0; // zurÃ¼ck zum Anfang
-  }
-</script>
+  <div class="lyrics">
+Build the fire and gather ′round the trees
+Fill the glass and maybe come and sing with me
 
+So kiss me under the mistletoe
+Pour out the wine, let's toast and pray for December snow
+I know there′s been pain this year, but it's time to let it go
+Next year, you never know
+But for now, Merry Christmas, we'll
 
-<p class=MsoNoSpacing><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='font-family:"Arial","sans-serif";
-background:white'>Ed Sheeran                                    Ed Sheeran
-&amp; Elton John                                     Elton John</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US>Build the fire and gather &#8242;round
-the trees<br>
-Fill the glass and maybe come and sing with me<br>
-<br>
-So kiss me under the mistletoe<br>
-Pour out the wine, let's toast and pray for December snow<br>
-I know there&#8242;s been pain this year, but it's time to let it go<br>
-Next year, you never know<br>
-But for now, Merry Christmas, we'll<br>
-<br>
-</span></p>
-
-<p class=MsoNoSpacing align=right style='text-align:right'><span lang=EN-US>Dance
-in the kitchen while embers glow<br>
-We&#8242;ve both known love, but this love we got is the best of all<br>
-I wish you could see it through my eyes, then you would know<br>
-My God, you look beautiful<br>
-Right now, Merry Christmas<br>
-<br>
-</span></p>
-
-<p class=MsoNoSpacing align=center style='text-align:center'><b><span
-lang=EN-US>The fire is raging on<br>
-And we&#8242;ll all sing along to this song<br>
-Just having so much fun<br>
-While we're here, can we all spare a thought for the ones who have gone?<br>
-Merry Christmas, everyone<br>
-<br>
-Ah-ah, ah-ah<br>
-Ah-ah, ah-ah<br>
-<br>
-</span></b></p>
-
-<p class=MsoNoSpacing><span lang=EN-US style='color:#BFBFBF'>So just keep
-kissing me under the mistletoe<br>
-Pour out the wine, let&#8242;s toast and pray for December snow<br>
-I know there's been pain this year, but it&#8242;s time to let it go<br>
-Next year, you never know<br>
-But for now, Merry Christmas, we'll</span></p>
-
-<p class=MsoNoSpacing align=right style='text-align:right'><span lang=EN-US
-style='color:#BFBFBF'>Dance in the kitchen while embers glow<br>
-We&#8242;ve both known love, but this love we got is the best of all<br>
-I wish you could see it through my eyes, then you would know<br>
-My God, you look beautiful<br>
-Right now, Merry Christmas</span><span lang=EN-US><br>
-<br>
-</span></p>
-
-<p class=MsoNoSpacing align=center style='text-align:center'><b><span
-lang=EN-US>I feel it when it comes<br>
-Every year helping us carry on<br>
-Filled up with so much love<br>
-All the family and friends are together where we all belong <br>
-Merry Christmas, everyone<br>
-<br>
-Ah-ah, ah-ah<br>
-Ah-ah, ah-ah<br>
-Ah-ah, ah-ah<br>
-Ah-ah, ah-ah<br>
-<br>
-It's Christmastime for you and I<br>
-We'll have a      good night and a             Merry Christmas<br>
-</span></b><span lang=EN-US style='font-size:10.0pt'>- 3 times -</span></p>
-
-<p class=MsoNoSpacing><span lang=EN-US>&nbsp;</span></p>
-
+  <div class="lyrics-right">
+Dance in the kitchen while embers glow
+We′ve both known love, but this love we got is the best of all
+I wish you could see it through my eyes, then you would know
+My God, you look beautiful
+Right now, Merry Christmas
 </div>
 
-</body>
+<strong>
+The fire is raging on
+And we′ll all sing along to this song
+Just having so much fun
+While we're here, can we all spare a thought for the ones who have gone?
+Merry Christmas, everyone
 
+Ah-ah, ah-ah
+Ah-ah, ah-ah
+</strong>
+
+So just keep kissing me under the mistletoe
+Pour out the wine, let′s toast and pray for December snow
+I know there's been pain this year, but it′s time to let it go
+Next year, you never know
+But for now, Merry Christmas, we'll
+
+  <div class="lyrics-right">
+Dance in the kitchen while embers glow
+We′ve both known love, but this love we got is the best of all
+I wish you could see it through my eyes, then you would know
+My God, you look beautiful
+Right now, Merry Christmas
+</div>
+
+<strong>
+I feel it when it comes
+Every year helping us carry on
+Filled up with so much love
+All the family and friends are together where we all belong
+Merry Christmas, everyone
+
+Ah-ah, ah-ah
+Ah-ah, ah-ah
+Ah-ah, ah-ah
+Ah-ah, ah-ah
+
+It's Christmastime for you and I
+We'll have a good night and a Merry Christmas
+</strong>
+
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
+</script>
+</body>
 </html>

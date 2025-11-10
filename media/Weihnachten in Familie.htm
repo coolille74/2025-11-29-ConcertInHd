@@ -1,193 +1,169 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weihnachten in Familie</title>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 14 (filtered)">
-<style>
-<!--
-  #top-audio button {
-    background-color: #f2f2f2;
-    cursor: pointer;
-    font-size: 14px;
-    text-align:right; 
-  }
- /* Font Definitions */
- @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:10.0pt;
-	margin-left:0cm;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-h2
-	{mso-style-link:"Überschrift 2 Zchn";
-	margin-top:10.0pt;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:0cm;
-	margin-bottom:.0001pt;
-	line-height:115%;
-	page-break-after:avoid;
-	font-size:13.0pt;
-	font-family:"Cambria","serif";
-	color:#4F81BD;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-span.berschrift2Zchn
-	{mso-style-name:"Überschrift 2 Zchn";
-	mso-style-link:"Überschrift 2";
-	font-family:"Cambria","serif";
-	color:#4F81BD;
-	font-weight:bold;}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:35.45pt 72.0pt 28.4pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
 
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 600px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
 </head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+<span style="color: gray;">| VP:</span>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="Weihnachten In Familie - Original.mp3"></audio>
+    <audio id="halfplayback" src="Weihnachten in Familie - HP.mp3"></audio>
 
-<body lang=DE>
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
+<span style="color: gray;">| HP:</span>
+    <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('halfplayback')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('halfplayback')">⏹️</button>
+  </div>
 
-<div class=WordSection1>
+  <h1>Weihnachten in Familie</h1>
 
-<!-- Player rechts oben -->
-<audio id="player">
-  <source src="Weihnachten in Familie (Karaoke).mp3" type="audio/mpeg">
-  Dein Browser unterstÃ¼tzt das Audio-Element nicht.
-</audio>
-<h1><span style='font-size:16.0pt;line-height:115%;font-family:"Calibri","sans-serif"'>Weihnachten
-in Familie</span></h1>
-<button onclick="document.getElementById('player').play()">Play</button>
-<button onclick="document.getElementById('player').pause()">Pause</button>
-<button onclick="stopAudio()">Stop</button>
-<script>
-  function stopAudio() {
-    const audio = document.getElementById('player');
-    audio.pause();
-    audio.currentTime = 0; // zurÃ¼ck zum Anfang
-  }
+  <div class="lyrics">  
+Weihnachten in Familie
+Sieh, wie die Kinder sich freu'n
+Wenn wir die Silbersterne
+Auf ihr Bäumchen streu'n
+<strong>
+Noch wärmer als die Kerzen
+Strahlt so ein Augenblick
+Ich wünsche dir von Herzen
+Frieden und viel Glück
+</strong>
+Weihnachten in Familie
+Alle sind zeitig zu Haus
+Holen die Heimlichkeiten
+Aus Verstecken raus
+<strong>
+Noch wärmer als die Kerzen
+Strahlt so ein Augenblick
+Ich wünsche dir von Herzen
+Frieden und viel Glück
+</strong>
+Weihnachten in Familie
+Bist du da einmal allein
+Wir wollen in Gedanken
+Alle bei dir sein
+<strong>
+Noch wärmer als die Kerzen
+Strahlt so ein Augenblick
+Wir wünschen dir von Herzen
+Frieden und viel Glück
+Frieden und viel Glück
+</strong>
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
 </script>
-
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Weihnachten in Familie</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Sieh, wie die Kinder sich
-freu'n</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Wenn wir die Silbersterne</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Auf ihr Bäumchen streu'n</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Noch
-wärmer als die Kerzen</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Strahlt
-so ein Augenblick</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Ich
-wünsche dir von Herzen</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Frieden
-und viel Glück</span></b></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Weihnachten in Familie</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Alle sind zeitig zu Haus</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Holen die Heimlichkeiten</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Aus Verstecken raus</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Noch
-wärmer …</span></b></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Weihnachten in Familie</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Bist du da einmal allein</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Wir wollen in Gedanken</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>Alle bei dir sein</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Noch
-wärmer als die Kerzen</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Strahlt
-so ein Augenblick</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Wir
-wünschen dir von Herzen</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Frieden
-und viel Glück</span></b></p>
-
-<p class=MsoNoSpacing style='margin-left:7.1pt'><b><span style='font-size:14.0pt'>Frieden
-und viel Glück</span></b></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='font-size:14.0pt'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='color:#A6A6A6'>Weihnachten in Familie ist
-ein Musikalbum, das der DDR-Schlagersänger Frank Schöbel und seine damalige
-Lebensgefährtin Aurora Lacasa 1985 mit den gemeinsamen Kindern Dominique und
-Odette veröffentlichten. Am 10. Oktober 1994 wurde das Album, nunmehr auch auf
-CD, erneut veröffentlicht</span></p>
-
-<p class=MsoNoSpacing><span style='color:#A6A6A6'>&nbsp;</span></p>
-
-<p class=MsoNoSpacing><span style='color:#A6A6A6'>Weihnachten in Familie gilt
-als der meistverkaufte Amiga-Tonträger. Über zwei Millionen Exemplare wurden
-bis 2019 verkauft. 1988 erhielten die Interpreten dafür den Preis „Goldene
-Amiga“.</span></p>
-
-</div>
-
 </body>
-
 </html>
