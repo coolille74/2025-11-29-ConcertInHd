@@ -78,7 +78,13 @@
   <div class="top-bar">
     <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
     <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="Can You Feel the Love Tonight - Original.mp3"></audio>
     <audio id="halfplayback" src="Can You Feel the Love Tonight - HP.mp3"></audio>
+
+<span style="color: gray;">| VP:</span>
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
 
 <span style="color: gray;">| HP:</span>
     <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>

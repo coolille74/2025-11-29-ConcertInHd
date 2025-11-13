@@ -37,7 +37,7 @@
     .board {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 25px;
       width: 90%;
       max-width: 800px;
     }
@@ -48,7 +48,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 110px;
+      height: 120px;
       font-size: 1.1rem;
       font-weight: 500;
       cursor: pointer;
@@ -61,7 +61,7 @@
     }
 
     .tile:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
       opacity: 0.9;
     }
@@ -80,11 +80,11 @@
     /* Farbvarianten */
     .c1 { background: #e74c3c; }   /* rot */
     .c2 { background: #f39c12; }   /* orange */
-    .c3 { background: #f1c40f; }   /* gelb */
+    .c3 { background: #3498db; }   /* blau */
     .c4 { background: #2ecc71; }   /* grün */
-    .c5 { background: #1abc9c; }   /* türkis */
-    .c6 { background: #3498db; }   /* blau */
-    .c7 { background: #9b59b6; }   /* lila */
+    .c5 { background: #f1c40f; }   /* gelb */
+    .c6 { background: #9b59b6; }   /* lila */
+    .c7 { background: #1abc9c; }   /* türkis */
     .c8 { background: #34495e; }   /* dunkelblau */
     .c9 { background: #e67e22; }  /* orangebraun */
     .c10 { background: #c0392b; }  /* dunkelrot */
@@ -95,16 +95,16 @@
   <h1>🎧 Weihnachtskonzert Hennickendorf 29.11.2025</h1>
 
   <div class="board">
-    <a href="media/Alle Jahre wieder.htm" class="tile c1">Alle Jahre wieder</a>
-    <a href="media/Winter Wonderland - Michael Bublé.htm" class="tile c2">Winter Wonderland</a>
-    <a href="media/Wir haben einen Weihnachtsbaum.htm" class="tile c4">Wir haben einen Weihnachtsbaum</a>
-    <a href="media/Merry Christmas - Ed Sheeran + Elton John.htm" class="tile c3">Merry Christmas</a>
-    <a href="media/Can You Feel the Love Tonight.htm" class="tile c5">Can You Feel the Love Tonight</a>
-    <a href="media/Silent Night - Michael Bublé.htm" class="tile c6"></i>Silent Night</a>
-    <a href="media/Daß ich eine Schneeflocke wär.htm" class="tile c7">Daß ich eine Schneeflocke wär</a>
-    <a href="media/Christmas Lights.htm" class="tile c8">Christmas Lights</a>
-    <a href="media/Weihnachten in Familie.htm" class="tile c9">Weihnachten in Familie</a>
-    <a href="media/Sind die Lichter angezündet.htm" class="tile c10">Sind die Lichter angezündet</a>
+    <a class="tile c1"  href="media/Alle Jahre wieder.htm">Alle Jahre wieder</a>
+    <a class="tile c2"  href="media/Winter Wonderland.htm">Winter Wonderland</a>
+    <a class="tile c3"  href="media/Wir haben einen Weihnachtsbaum.htm">Wir haben einen Weihnachtsbaum</a>
+    <a class="tile c4"  href="media/Can You Feel the Love Tonight.htm" >Can You Feel the Love Tonight</a>
+    <a class="tile c5"  href="media/Christmas Lights.htm">Christmas Lights</a>
+    <a class="tile c6"  href="media/Daß ich eine Schneeflocke wär.htm">Daß ich eine Schneeflocke wär</a>
+    <a class="tile c7"  href="media/Merry Christmas.htm">Merry Christmas</a>
+    <a class="tile c8"  href="media/Silent Night.htm"></i>Silent Night</a>
+    <a class="tile c9"  href="media/Weihnachten in Familie.htm">Weihnachten in Familie</a>
+    <a class="tile c10" href="media/Sind die Lichter angezündet.htm">Sind die Lichter angezündet</a>
   </div>
 
   <footer>© 2025 Soundboard</footer>
