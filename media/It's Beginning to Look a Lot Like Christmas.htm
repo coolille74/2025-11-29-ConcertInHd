@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title> <!-- Wird dynamisch gesetzt -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --button-bg: #f0f0f0;
+      --button-text: #000000;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --button-bg: #333333;
+      --button-text: #ffffff;
+    }
+
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* --- obere Leiste mit Mode + Audio --- */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mode-toggle,
+    .audio-btn {
+      padding: 4px 8px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .mode-toggle:hover,
+    .audio-btn:hover {
+      opacity: 0.8;
+    }
+
+    .lyrics {
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.2;
+	}
+  </style>
+</head>
+<body class="dark">
+  <div class="top-bar">
+    <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
+<span style="color: gray;">| VP:</span>
+    <!-- Audio-Steuerung: sehr kompakt -->
+    <audio id="original" src="It's Beginning to Look a Lot Like Christmas - Original.mp3"></audio>
+    <audio id="halfplayback" src="It's Beginning to Look a Lot Like Christmas - HP.mp3"></audio>
+
+    <button class="audio-btn" onclick="playAudio('original')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('original')">⏹️</button>
+<span style="color: gray;">| HP:</span>
+    <button class="audio-btn" onclick="playAudio('halfplayback')">▶️</button>
+    <button class="audio-btn" onclick="pauseAudio('halfplayback')">⏸️</button>
+	<button class="audio-btn" onclick="stopAudio('halfplayback')">⏹️</button>
+  </div>
+
+  <h1>It's Beginning to Look a Lot Like Christmas</h1>
+
+  <div class="lyrics">
+It’s beginning to look a lot like Christmas
+Everywhere you go
+Take a look at the five and ten, it’s glistening once again
+With candy canes and silver lanes that glow
+
+It’s beginning to look a lot like Christmas
+Toys in every store
+But the prettiest sight to see is the holly that will be
+On your own front door
+
+A pair of Hopalong boots and a pistol that shoots
+Is the wish of Barney and Ben
+Dolls that’ll talk and will go for a walk
+Is the hope of Janice and Jen
+And Mom and Dad can hardly wait for school to start again
+
+It’s beginning to look a lot like Christmas
+Everywhere you go
+There’s a tree in the Grand Hotel, one in the park as well
+It’s the sturdy kind that doesn’t mind the snow
+
+It’s beginning to look a lot like Christmas
+Soon the bells will start
+And the thing that’ll make ‚em ring is the carol that you sing
+Right within your heart
+
+It’s beginning to look a lot like Christmas
+Toys in every store
+But the prettiest sight to see is the holly that will be
+On your own front door
+
+Sure, it’s Christmas once more
+  </div>
+
+  <script>
+    // --- Titel dynamisch aus h1 übernehmen ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      if (h1) document.title = h1.textContent.trim();
+    });
+
+    // Dark-/Light-Mode-Umschalter
+    const toggleBtn = document.getElementById("modeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    // Audio-Steuerung
+    // --- Audio-Steuerung (mobil sicher) ---
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+      // Browser verlangt: .play() nur in direktem User-Event
+      audio.play().catch(err => console.log("Play blockiert:", err));
+    }
+
+    function pauseAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) audio.pause();
+    }
+
+    function stopAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
+</script>
+</body>
+</html>
