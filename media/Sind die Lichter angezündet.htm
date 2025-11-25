@@ -61,9 +61,10 @@
     }
 
     .lyrics {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       white-space: pre-line;
+      font-size: 20px; /* kleinere Schrift */
     }
 
     .lyrics-right {
@@ -79,14 +80,31 @@
       margin: 10px 0;
       line-height: 1.2;
 	}
-  </style>
+
+	.back-btn {
+	  padding: 4px 8px;
+	  background: var(--button-bg);
+	  color: var(--button-text);
+      border: none;
+	  border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+	  text-decoration: none;
+	}
+
+	.back-btn:hover {
+	  opacity: 0.8;
+	}
+</style>
 </head>
 <body class="dark">
   <div class="top-bar">
+    <a href="../index.html" class="back-btn">⬅️ Back to Index</a>
     <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
 <span style="color: gray;">| VP:</span>
     <!-- Audio-Steuerung: sehr kompakt -->
-    <audio id="original" src="Sind die Lichter angezündet.mp3"></audio>
+    <audio id="original" src="Sind die Lichter angezündet - Original.mp3"></audio>
 
     <button class="audio-btn" onclick="playAudio('original')">▶️</button>
     <button class="audio-btn" onclick="pauseAudio('original')">⏸️</button>

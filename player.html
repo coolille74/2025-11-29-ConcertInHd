@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soundboard</title>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    body {
+      background: #111;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      color: #eee;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      width: 95%;
+      max-width: 1200px;
+      transition: 0.3s ease;
+    }
+
+    .tile {
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 150px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tile:hover {
+      transform: scale(1.08);
+      opacity: 0.99;
+    }
+
+    /* Zustand wenn geklickt */
+    .tile.active {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 96vw;
+      height: 88vh;
+      max-width: 1250px;
+      max-height: 800px;
+      font-size: 2rem;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      box-shadow: 0 0 50px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    footer a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Farbvarianten */
+    .c1 { background: #e74c3c; }
+    .c2 { background: #f39c12; }
+    .c3 { background: #3498db; }
+    .c4 { background: #2ecc71; }
+    .c5 { background: #9b59b6; }
+    .c6 { background: #f1c40f; }
+    .c7 { background: #e67e22; }
+    .c8 { background: #34495e; }
+    .c9 { background: #1abc9c; }
+    .c10 { background: #40E0D0; }
+    .c11 { background: #FFD700; }
+    .c12 { background: #c0392b; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Titel lädt Seite neu (Abbruchfunktion) -->
+  <h1 onclick="location.reload()">🎧 Kleines Weihnachtskonzert - Hennickendorf 29.11.2025</h1>
+
+  <div class="board">
+    <div class="tile c1"  data-sound="media/It's Beginning to Look a Lot Like Christmas - HP.mp3">It's Beginning to Look<br> a Lot Like Christmas</div>
+    <div class="tile c2"  data-sound="media/Alle Jahre wieder.mp3">Alle Jahre wieder<br>(Live)</div>
+    <div class="tile c3"  data-sound="media/Winter Wonderland - Amy Grant - HP.mp3">Winter Wonderland</div>
+    <div class="tile c4"  data-sound="media/Wir haben einen Weihnachtsbaum - HP.mp3">Wir haben einen<br> Weihnachtsbaum</div>
+    <div class="tile c5"  data-sound="media/Can You Feel the Love Tonight - HP.mp3">Can You Feel<br> the Love Tonight</div>
+    <div class="tile c6"  data-sound="media/Christmas Lights - HP.mp3">Christmas Lights</div>
+    <div class="tile c7"  data-sound="media/Dass ich eine Schneeflocke wär.mp3">Daß ich eine<br> Schneeflocke wär<br>(Live)</div>
+    <div class="tile c8"  data-sound="media/Merry Christmas - HP.mp3">Merry Christmas</div>
+    <div class="tile c9"  data-sound="media/Silent Night - HP Instrumental.mp3">Silent Night</div>
+    <div class="tile c10" data-sound="media/Weihnachten in Familie - HP.mp3">Weihnachten in Familie</div>
+    <div class="tile c11" data-sound="media/Sind die Lichter angezündet.mp3">Sind die Lichter<br> angezündet<br>(Live)</div>
+    <div class="tile c12" data-sound="media/Der Weihnachtsgedanke - HP.mp3">Der Weihnachtsgedanke<br>(Optional)</div>
+  </div>
+
+  <footer>
+    © 2025 Soundboard |
+    <b><a href="player.html">Player</a></b> |
+    <a href="index.html">Lyrics</a>
+  </footer>
+
+  <script>
+  const tiles = document.querySelectorAll(".tile");
+  let currentAudio = null;
+  let activeTile = null;
+
+  tiles.forEach(tile => {
+    tile.addEventListener("click", (event) => {
+      event.stopPropagation(); // Klick nicht weiterreichen
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+
+      // aktiv setzen
+      tile.classList.add("active");
+      activeTile = tile;
+
+      const src = tile.dataset.sound;
+      const audio = new Audio(src);
+      currentAudio = audio;
+
+      audio.play();
+
+      audio.addEventListener("ended", () => {
+        tile.classList.remove("active");
+        activeTile = null;
+      });
+    });
+  });
+
+  // Klick überall sonst -> reload
+  document.addEventListener("click", () => {
+    if (activeTile) {
+      location.reload();
+    }
+  });
+  </script>
+
+
+</body>
+</html>

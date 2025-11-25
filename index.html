@@ -77,6 +77,15 @@
       color: #777;
     }
 
+    footer a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     /* Farbvarianten */
     .c1 { background: #e74c3c; }   /* rot */
     .c2 { background: #f39c12; }   /* orange */
@@ -94,24 +103,29 @@
 </head>
 <body>
 
-  <h1>🎧 Kleines Weihnachtskonzert - Hennickendorf 29.11.2025</h1>
+  <!-- Titel lädt Seite neu (Abbruchfunktion) -->
+  <h1 onclick="location.reload()">🎧 Kleines Weihnachtskonzert - Hennickendorf 29.11.2025</h1>
 
   <div class="board">
     <a class="tile c1"  href="media/It's Beginning to Look a Lot Like Christmas.htm">It's Beginning to Look<br> a Lot Like Christmas</a>
-    <a class="tile c2"  href="media/Alle Jahre wieder.htm">Alle Jahre wieder</a>
+    <a class="tile c2"  href="media/Alle Jahre wieder.htm">Alle Jahre wieder<br>(Live)</a>
     <a class="tile c3"  href="media/Winter Wonderland.htm">Winter Wonderland</a>
     <a class="tile c4"  href="media/Wir haben einen Weihnachtsbaum.htm">Wir haben einen<br> Weihnachtsbaum</a>
     <a class="tile c5"  href="media/Can You Feel the Love Tonight.htm" >Can You Feel<br> the Love Tonight</a>
     <a class="tile c6"  href="media/Christmas Lights.htm">Christmas Lights</a>
-    <a class="tile c7"  href="media/Daß ich eine Schneeflocke wär.htm">Daß ich eine<br> Schneeflocke wär</a>
+    <a class="tile c7"  href="media/Daß ich eine Schneeflocke wär.htm">Daß ich eine<br> Schneeflocke wär<br>(Live)</a>
     <a class="tile c8"  href="media/Merry Christmas.htm">Merry Christmas</a>
-    <a class="tile c9"  href="media/Silent Night.htm"></i>Silent Night</a>
+    <a class="tile c9"  href="media/Silent Night.htm"></i>Silent Night<br>Stille Nacht<br>(Live)</a>
     <a class="tile c10" href="media/Weihnachten in Familie.htm">Weihnachten in Familie</a>
-    <a class="tile c11" href="media/Sind die Lichter angezündet.htm">Sind die Lichter<br> angezündet</a>
-    <a class="tile c12" href="media/Stille Nacht.htm">Stille Nacht</a>
+    <a class="tile c11" href="media/Sind die Lichter angezündet.htm">Sind die Lichter<br> angezündet<br>(Live)</a>
+    <a class="tile c12" href="media/Der Weihnachtsgedanke.htm">Der Weihnachtsgedanke<br>(Optional)</a>
   </div>
 
-  <footer>© 2025 Soundboard</footer>
+  <footer>
+    © 2025 Soundboard |
+    <a href="player.html">Player</a> |
+    <b><a href="index.html">Lyrics</a></b>
+  </footer>
 
 </body>
 </html>

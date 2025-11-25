@@ -72,10 +72,27 @@
       margin: 10px 0;
       line-height: 1.2;
 	}
-  </style>
+
+	.back-btn {
+	  padding: 4px 8px;
+	  background: var(--button-bg);
+	  color: var(--button-text);
+      border: none;
+	  border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px; /* kleinere Schrift */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+	  text-decoration: none;
+	}
+
+	.back-btn:hover {
+	  opacity: 0.8;
+	}
+</style>
 </head>
 <body class="dark">
   <div class="top-bar">
+    <a href="../index.html" class="back-btn">⬅️ Back to Index</a>
     <button class="mode-toggle" id="modeToggle">☀️ Light Mode</button>
 <span style="color: gray;">| VP:</span>
     <!-- Audio-Steuerung: sehr kompakt -->
@@ -131,6 +148,7 @@ Those Christmas lights light up the street
 Maybe they'll bring her back to me
 And then all my troubles will be gone
 Oh, Christmas lights, keep shinin′ on
+
 
 Oh, Christmas lights, light up the street
 Light up the fireworks in me
